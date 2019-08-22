@@ -1,9 +1,28 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>recipe-details</ion-title>
+    <ion-buttons padding slot="start">
+      <ion-back-button defaultHref="/recipes"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ recipe.title | titlecase }}</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="onDelete()">
+          <ion-icon name="trash"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content fullscreen>
+  <ion-card>
+    <img [src]="recipe.imageUrl">
+    <ion-card-header text-center>{{ recipe.title }}</ion-card-header>
+    <ion-card-subtitle padding text-center>Ingredients</ion-card-subtitle>
+    <ion-card-content>
+      <ion-list *ngFor="let ingredient of recipe.ingredients">
+        <ion-item>
+          {{ ingredient }}
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
